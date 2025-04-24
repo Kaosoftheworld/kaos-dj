@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>DJ KAOS MODE ACTIVATED</title>
     <style>
         body {
@@ -101,8 +101,7 @@
             <span>"Roses are red,</span><br>
             <span>Violets are glitched.</span><br>
             <span>But the beats go hard</span><br>
-            <span>...when KAOS is DJ-ing."</span><br>
-            <br>
+            <span>...when KAOS is DJ-ing."</span><br><br>
             <span style="font-size: 0.8em; opacity: 0.7;">(Warning: Bass may cause chaos.)</span>
         </div>
         
@@ -111,28 +110,27 @@
         <button id="djKaosBtn">🎧 LAUNCH DJ KAOS MODE</button>
         
         <div id="player">
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/kaos_uk/clear&amp;color=%23ff2e63&amp;auto_play=false&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=false">
+            <iframe 
+                width="100%" 
+                height="166" 
+                scrolling="no" 
+                frameborder="no" 
+                allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/kaos_uk/i-told-u&color=%23ff2e63&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
             </iframe>
-            <p><em>Now playing: <strong>"Clear" by kaos_uk</strong></em></p>
+            <p><em>Now playing: <strong>"I Told U" by Kaos of the World</strong></em></p>
         </div>
         
-        <button id="stopDj" style="display: none; background: #00ffcc; color: #0f0e17;">
-            🚫 STOP THE MADNESS
-        </button>
+        <button id="stopDj" style="display: none; background: #00ffcc; color: #0f0e17;">🚫 STOP THE MADNESS</button>
     </div>
 
     <div id="visualizer"></div>
 
     <script>
-        console.log("%cDJ KAOS MODE: LOADING...", "color: #ff2e63; font-size: 24px; font-weight: bold;");
-        console.log("Bass level: ∞");
-
         function nukePoem() {
             const poem = document.getElementById('poem');
             poem.innerHTML = `
-                💥<br>
-                🔥<br>
-                💔<br>
+                💥<br>🔥<br>💔<br>
                 <em>"romance.exe has stopped working"</em><br>
                 <button onclick="window.location.reload()">CTRL+ALT+LOVE</button>
             `;
@@ -145,14 +143,14 @@
                 .replace(/e/gi, '3')
                 .replace(/l/gi, '1')
                 .replace(/t/gi, '7')
-                + '<br><br> <button onclick="window.location.reload()">UND0 CH40S</button>';
+                + '<br><br><button onclick="window.location.reload()">UND0 CH40S</button>';
         });
 
         document.getElementById('djKaosBtn').addEventListener('click', function() {
             document.getElementById('player').style.display = 'block';
             document.getElementById('stopDj').style.display = 'inline-block';
             document.getElementById('djKaosBtn').style.display = 'none';
-            
+
             const visualizer = document.getElementById('visualizer');
             visualizer.style.display = 'block';
             visualizer.innerHTML = '';
@@ -186,5 +184,5 @@
             });
         });
     </script>
-
-</body></html>
+</body>
+</html>
