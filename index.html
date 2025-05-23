@@ -1,74 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kaosoftheworld - Kaos DJ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaosoftheworld</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: black;
+  color: #ff004d;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+}
 
-    body {
-      margin: 0;
-      background: #1a0000; /* dark red room vibe */
-      color: #fff;
-      font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem 1rem;
-      gap: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    h1 {
-      font-size: 3rem;
-      color: #ff3b3b;
-      text-shadow:
-        0 0 5px #ff3b3b,
-        0 0 15px #ff0000,
-        0 0 30px #ff0000,
-        0 0 40px #ff0000;
-      margin: 2rem 0 0 0;
-      font-weight: 700;
-      user-select: none;
-    }
-    iframe {
-      border-radius: 12px;
-      width: 100%;
-      max-width: 400px;
-      height: 80px;
-      box-shadow: 0 0 15px #ff0000aa;
-      transition: box-shadow 0.3s ease;
-    }
-    iframe:hover {
-      box-shadow: 0 0 25px #ff4444ff;
-    }
-    @media (max-width: 480px) {
-      iframe {
-        max-width: 100%;
-        height: 70px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-    }
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+h1.title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  animation: glitch 1.5s infinite;
+  color: #ff004d;
+}
+
+h1.footer {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 4rem;
+  color: #ff004d;
+}
+
+.spotify-track {
+  max-width: 420px;
+  margin: 2rem auto;
+}
+
+.terminal {
+  color: #39ff14;
+  font-family: monospace;
+  font-size: 0.85rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  background: rgba(0,0,0,0.5);
+  padding: 1rem;
+  border-radius: 8px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 2px red, -2px -2px blue; }
+  20% { text-shadow: -2px -2px red, 2px 2px blue; }
+  40% { text-shadow: 1px -1px red, -1px 1px blue; }
+  60% { text-shadow: -1px 1px red, 1px -1px blue; }
+  80% { text-shadow: 2px -2px red, -2px 2px blue; }
+  100% { text-shadow: -2px -2px red, 2px 2px blue; }
+}
+
   </style>
 </head>
-<body>
+<body><canvas id="grid"></canvas>
 
-  <iframe src="https://open.spotify.com/embed/track/5udcOWaVA1ONItQ3KAAv6A" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" frameborder="0"></iframe>
+  <h1 class="title">Kaosoftheworld</h1>  <div class="spotify-track">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5udcOWaVA1ONItQ3KAAv6A?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <div class="spotify-track">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7twt2UDYcUgP9taTgRc3Fo?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <div class="spotify-track">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4VT89d5LavLRj0WWk1kgsh?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <div class="spotify-track">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/75JtSeq2N6cUeMGtBfZihE?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <div class="spotify-track">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6xMmEevF42ylXhnyyMpA79?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>  <h1 class="footer">kaos was here</h1>  <div class="terminal" id="terminal"></div>  <script>
+    const lines = [
+      '> loading artist profile...',
+      '> connected: kaosoftheworld',
+      '> uploads synced: 5/5 tracks',
+    ];
+    let index = 0;
+    function typeLine() {
+      if (index < lines.length) {
+        document.getElementById('terminal').textContent += lines[index] + '\n';
+        index++;
+        setTimeout(typeLine, 1000);
+      }
+    }
+    typeLine();
 
-  <iframe src="https://open.spotify.com/embed/track/7twt2UDYcUgP9taTgRc3Fo" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" frameborder="0"></iframe>
+    const canvas = document.getElementById('grid');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-  <iframe src="https://open.spotify.com/embed/track/4VT89d5LavLRj0WWk1kgsh" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" frameborder="0"></iframe>
+    const spacing = 40;
+    const cols = Math.floor(canvas.width / spacing);
+    const rows = Math.floor(canvas.height / spacing);
 
-  <iframe src="https://open.spotify.com/embed/track/75JtSeq2N6cUeMGtBfZihE" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" frameborder="0"></iframe>
+    function drawGrid() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = 'rgba(255, 0, 77, 0.1)';
+      for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+          ctx.strokeRect(x * spacing, y * spacing, spacing, spacing);
+        }
+      }
+    }
 
-  <iframe src="https://open.spotify.com/embed/track/6xMmEevF42ylXhnyyMpA79" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" frameborder="0"></iframe>
-
-  <h1>kaos was here</h1>
-
-</body>
+    drawGrid();
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      drawGrid();
+    });
+  </script></body>
 </html>
