@@ -39,22 +39,21 @@
       color: #ff004d;
     }
 
-    .spotify-track {
+    h2.section {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      color: #ff4da6;
+    }
+
+    .spotify-track, .soundcloud-track {
       max-width: 420px;
       margin: 2rem auto;
     }
 
-    .terminal {
-      color: #39ff14;
-      font-family: monospace;
-      font-size: 0.85rem;
-      margin: 2rem auto;
-      max-width: 600px;
-      background: rgba(0,0,0,0.5);
-      padding: 1rem;
-      border-radius: 8px;
-      line-height: 1.5;
-      white-space: pre-wrap;
+    iframe {
+      border-radius: 12px;
+      width: 100%;
     }
 
     @keyframes glitch {
@@ -73,42 +72,36 @@
 
   <h1 class="title">Kaosoftheworld</h1>
 
+  <!-- Spotify Section -->
   <div class="spotify-track">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5udcOWaVA1ONItQ3KAAv6A?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/5udcOWaVA1ONItQ3KAAv6A?utm_source=generator" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
   <div class="spotify-track">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7twt2UDYcUgP9taTgRc3Fo?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/7twt2UDYcUgP9taTgRc3Fo?utm_source=generator" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
   <div class="spotify-track">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4VT89d5LavLRj0WWk1kgsh?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/4VT89d5LavLRj0WWk1kgsh?utm_source=generator" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
   <div class="spotify-track">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/75JtSeq2N6cUeMGtBfZihE?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/75JtSeq2N6cUeMGtBfZihE?utm_source=generator" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
   <div class="spotify-track">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6xMmEevF42ylXhnyyMpA79?utm_source=generator" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/6xMmEevF42ylXhnyyMpA79?utm_source=generator" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+
+  <!-- SoundCloud Section -->
+  <h2 class="section">soundcloud section</h2>
+  <div class="soundcloud-track">
+    <iframe 
+      height="166" 
+      allow="autoplay" 
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/kaosoftheworld/kaos-final-set&color=%23161616&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+    ></iframe>
   </div>
 
   <h1 class="footer">kaos was here</h1>
 
-  <div class="terminal" id="terminal"></div>
-
   <script>
-    const lines = [
-      '> loading artist profile...',
-      '> connected: kaosoftheworld',
-      '> uploads synced: 5/5 tracks',
-    ];
-    let index = 0;
-    function typeLine() {
-      if (index < lines.length) {
-        document.getElementById('terminal').textContent += lines[index] + '\\n';
-        index++;
-        setTimeout(typeLine, 1000);
-      }
-    }
-    typeLine();
-
     const canvas = document.getElementById('grid');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
